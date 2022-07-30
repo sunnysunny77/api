@@ -1,7 +1,7 @@
 <?php
 
 header('Access-Control-Allow-Origin: *');
-header ("Access-Control-Allow-Headers: *");
+header ("Access-Control-Allow-Headers: Authorization");
 
 $user = $_SERVER['PHP_AUTH_USER'];
 $pass = $_SERVER['PHP_AUTH_PW'];

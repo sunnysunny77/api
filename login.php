@@ -6,19 +6,19 @@ header ("Access-Control-Allow-Headers: Authorization");
 $user = $_SERVER['PHP_AUTH_USER'];
 $pass = $_SERVER['PHP_AUTH_PW'];
 
-if ($user !== "a") {
+if ($user !== "2@2.com") {
 
-  echo json_encode("User not authorized");
+  echo json_encode("Incorrect User");
   exit;
 }
 
 if ($pass !== "a") {
 
-  echo json_encode("Password not authorized");
+  echo json_encode("Incorrect Password");
   exit;
 }
 
-echo json_encode("authorized");
+echo json_encode(true);
 header( "Connection: Close" );
 exit;
 

@@ -15,7 +15,6 @@ class Authorization {
 
     public function ValidAuth () {
 
-       echo header('Access-Control-Allow-Origin: http://localhost:3000');
        echo header("Access-Control-Allow-Headers: Authorization");
        echo header('Access-Control-Allow-Methods: OPTIONS');
 
@@ -24,7 +23,7 @@ class Authorization {
        if (!$result) {
 
         echo json_encode("Incorrect User");
-        return;
+        exit();
        }
 
        $result = password_verify($this->pass, $result["pass"]);
@@ -32,7 +31,7 @@ class Authorization {
        if (!$result) {
 
         echo json_encode("Incorrect Password");
-        return;
+        exit();
        }
 
        echo json_encode(true);

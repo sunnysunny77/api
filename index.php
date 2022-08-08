@@ -8,3 +8,10 @@ if (isset($_GET['controller']) && $_GET['controller'] == "authorization" && isse
   $controller = new $_GET['controller']($model,$_SERVER['PHP_AUTH_USER'],$_SERVER['PHP_AUTH_PW']);
   $controller->Authorization();
 }
+
+if (isset($_GET['controller']) && $_GET['controller'] == "registration" && isset($_GET['model']) &&  $_GET['model'] == "signup") {
+  
+  $model = new $_GET['model'];
+  $controller = new $_GET['controller']($model,$_SERVER['PHP_AUTH_USER'],$_SERVER['PHP_AUTH_PW']);
+  $controller->Registration();
+}

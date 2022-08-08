@@ -4,10 +4,7 @@ require "db.class.php";
 
 class Login extends Db {
 
- 
-
     public function GetPass ($email) {
-
 
         try {
 
@@ -20,7 +17,6 @@ class Login extends Db {
             exit();
         }     
     
-
         return  $stmt->fetch();
     }
 }

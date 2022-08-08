@@ -6,6 +6,5 @@ if (isset($_GET['controller']) && $_GET['controller'] == "authorization" && isse
   $model = new $_GET['model'];
   $controller = new $_GET['controller']($model,$_SERVER['PHP_AUTH_USER'],$_SERVER['PHP_AUTH_PW']);
   $controller->ValidAuth();
-  exit();
 }
 

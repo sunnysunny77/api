@@ -1,14 +1,26 @@
 <?php
 
-class Login {
+require "db.class.php";
 
-    protected $email = "2@2.com";
-    protected $pass = "a";
+class Login extends Db {
+
+ 
 
     public function GetPass ($email) {
 
-       $result = $this->email == $email ? $this->pass : false;
 
-        return $result;
+        try {
+
+            $sql = "SELECT pass FROM login WHERE email = ?";
+            $stmt = $this->connect()->prepare($sql);
+            $stmt->execute([ $email ]);
+        } catch (PDOException $e) {
+
+            echo json_encode($e->getMessage());
+            exit();
+        }     
+    
+
+        return  $stmt->fetch();
     }
 }

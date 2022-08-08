@@ -13,7 +13,7 @@ class Authorization {
         $this->pass = $pass;
     }
 
-    public function ValidAuth () {
+    public function Authorization () {
 
        echo header("Access-Control-Allow-Headers: Authorization");
        echo header('Access-Control-Allow-Methods: OPTIONS');

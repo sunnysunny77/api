@@ -8,4 +8,3 @@ if (isset($_GET['controller']) && $_GET['controller'] == "authorization" && isse
   $controller = new $_GET['controller']($model,$_SERVER['PHP_AUTH_USER'],$_SERVER['PHP_AUTH_PW']);
   $controller->Authorization();
 }
-

@@ -32,7 +32,7 @@ class Authorization {
        }
 
        // pass word hash
-       $result = $this->pass == $result ? true : false;
+       $result = password_verify($this->pass, $result["pass"]);
 
        if (!$result) {
 

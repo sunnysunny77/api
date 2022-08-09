@@ -34,7 +34,7 @@ class Authorization {
         exit();
        }
 
-       echo json_encode(true);
+       echo json_encode(md5(true));
        echo header("Connection: Close");
        exit();
     }

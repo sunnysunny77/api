@@ -55,7 +55,7 @@ class Registration
             'domain' => 'localhost',
             'secure' => false,
             'httponly' => true,
-            'samesite' => 'none',
+            'samesite' => 'strict',
         ];
         setcookie("authorizationcookie", base64_encode("password123456"), $opt);
         echo json_encode(base64_encode("password123456"));

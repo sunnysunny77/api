@@ -7,7 +7,7 @@ class Logout {
 
         echo header("Access-Control-Allow-Headers: Cookie");
         echo header('Access-Control-Allow-Methods: GET');
-        setcookie("authorizationcookie", false, null, "/?controller=authorizationcookie" );
+        setcookie("authorizationcookie", false, null, "/" );
         echo header("Connection: Close");
         exit();
     }

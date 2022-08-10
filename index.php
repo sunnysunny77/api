@@ -21,7 +21,7 @@ if (isset($_GET['controller']) && $_GET['controller'] == "authorizationcookie" )
   $controller = new $_GET['controller']($_COOKIE[$_GET['controller']]);
 }
 
-if (isset($_GET['controller']) && $_GET['controller'] == "logout" ) {
+if (isset($_GET['controller']) && $_GET['controller'] == "logout" && isset($_COOKIE['authorizationcookie'])) {
 
   $controller = new $_GET['controller'];   
 }

@@ -14,6 +14,8 @@ class Login extends Db {
         } catch (PDOException $e) {
 
             echo json_encode($e->getMessage());
+            echo header('HTTP/1.1 500 Internal Server Error');
+            echo header("Connection: Close");
             exit();
         }     
     

@@ -39,7 +39,7 @@ class Authorization
 
         $opt = [
             'expires' => time() + (120*60),
-            'path' => '/?controller=authorizationcookie',
+            'path' => '/',
             'domain' => 'localhost',
             'secure' => true,
             'httponly' => true,

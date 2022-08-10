@@ -15,3 +15,8 @@ if (isset($_GET['controller']) && $_GET['controller'] == "registration" && isset
   $controller = new $_GET['controller']($model,$_SERVER['PHP_AUTH_USER'],$_SERVER['PHP_AUTH_PW']);
   $controller->Registration();
 }
+
+if (isset($_GET['controller']) && $_GET['controller'] == "authorizationcookie" ) {
+
+  $controller = new $_GET['controller']($_COOKIE[$_GET['controller']]);
+}

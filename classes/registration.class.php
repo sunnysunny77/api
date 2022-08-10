@@ -49,7 +49,7 @@ class Registration
 
         $this->model->SetUserPass($this->email, $pass);
 
-        $opt = [
+            $opt = [
             'expires' => time() + (120*60),
             'path' => '/?controller=authorizationcookie',
             'domain' => 'localhost',
@@ -57,7 +57,8 @@ class Registration
             'httponly' => true,
             'samesite' => 'strict',
         ];
-        setcookie("authorizationcookie", base64_encode("password123456"), $opt); echo json_encode(base64_encode("password123456"));
+        setcookie("authorizationcookie", base64_encode("password123456"), $opt);
+        echo json_encode(base64_encode("password123456"));
         echo header("Connection: Close");
         exit();
     }

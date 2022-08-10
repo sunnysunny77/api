@@ -49,8 +49,8 @@ class Registration
 
         $this->model->SetUserPass($this->email, $pass);
 
-            $opt = [
-            'expires' => time() + (120*60),
+        $opt = [
+            'expires' => time() + (120 * 60),
             'path' => '/?controller=authorizationcookie',
             'domain' => 'localhost',
             'secure' => true,

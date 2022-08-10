@@ -12,6 +12,7 @@ class Authorizationcookie {
             echo header("Connection: Close");
             exit();
         }
+        
         echo json_encode(false);
         echo header("Connection: Close");
         exit();

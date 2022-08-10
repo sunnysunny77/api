@@ -37,7 +37,7 @@ class Authorization
             exit();
         }
 
-        setcookie("authorizationcookie", base64_encode(md5(true)), time() + (1*30), "/?controller=authorizationcookie", "localhost", true, true);
+        setcookie("authorizationcookie", base64_encode(md5(true)), time() + (120*60), "/?controller=authorizationcookie", "localhost", true, true);
         echo json_encode(base64_encode(md5(true)));
         echo header("Connection: Close");
         exit();

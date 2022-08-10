@@ -7,3 +7,5 @@ authorization.class.php: cookies REACT_APP_KEY
 registration.class.php: cookies REACT_APP_KEY
 <br>
 authorizationcookie.class.php: REACT_APP_KEY
+<br>
+logout.class.php cookies

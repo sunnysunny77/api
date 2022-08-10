@@ -6,7 +6,7 @@ class Authorizationcookie {
         
         echo header('Access-Control-Allow-Methods: GET');
 
-        if (isset($cookie)) {
+        if (isset($cookie) && $cookie == base64_encode("password123456")) {
             echo json_encode(base64_encode("password123456"));
             echo header("Connection: Close");
             exit();

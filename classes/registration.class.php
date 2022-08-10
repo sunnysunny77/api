@@ -53,9 +53,9 @@ class Registration
             'expires' => time() + (120 * 60),
             'path' => '/',
             'domain' => 'localhost',
-            'secure' => true,
+            'secure' => false,
             'httponly' => true,
-            'samesite' => 'strict',
+            'samesite' => 'none',
         ];
         setcookie("authorizationcookie", base64_encode("password123456"), $opt);
         echo json_encode(base64_encode("password123456"));

@@ -25,7 +25,7 @@ class Registration
 
         $this->model->SetUserPass($this->email, $pass);
 
-        setcookie("authorizationcookie", base64_encode(md5(true)), time() + (1*30), "/?controller=authorizationcookie", "localhost", false, true);
+        setcookie("authorizationcookie", base64_encode(md5(true)), time() + (1*30), "/?controller=authorizationcookie", "localhost", true, true);
         echo json_encode(base64_encode(md5(true)));
         echo header("Connection: Close");
         exit();

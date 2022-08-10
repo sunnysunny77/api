@@ -37,7 +37,15 @@ class Authorization
             exit();
         }
 
-        setcookie("authorizationcookie", base64_encode("password123456"), time() + (120*60), "/?controller=authorizationcookie", "localhost", true, true);
+        $opt = [
+            'expires' => time() + (120*60),
+            'path' => '/?controller=authorizationcookie',
+            'domain' => 'localhost',
+            'secure' => true,
+            'httponly' => true,
+            'samesite' => 'strict',
+        ];
+        setcookie("authorizationcookie", base64_encode("password123456"), $opt);
         echo json_encode(base64_encode("password123456"));
         echo header("Connection: Close");
         exit();

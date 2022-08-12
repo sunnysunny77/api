@@ -18,8 +18,7 @@ class Signup extends Db {
                 return $e;
             }
 
-            echo json_encode($e->getMessage());
-            echo header('HTTP/1.1 500 Internal Server Error');
+            echo header("HTTP/1.1 500 {$e->getMessage()}");
             echo header("Connection: Close");
             exit();
         }     

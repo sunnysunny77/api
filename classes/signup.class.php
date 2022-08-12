@@ -14,9 +14,8 @@ class Signup extends Db {
         } catch (PDOException $e) {
 
             if ($e->getCode() == 23000) {
-
-                echo json_encode("Error Username Taken");
-                exit();
+  
+                return $e;
             }
 
             echo json_encode($e->getMessage());

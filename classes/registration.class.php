@@ -49,7 +49,13 @@ class Registration extends Config
 
         $pass = password_hash($this->pass, PASSWORD_DEFAULT);
 
-        $this->model->SetUserPass($this->email, $pass);
+        $result = $this->model->SetUserPass($this->email, $pass);
+
+        if ($result->errorInfo) {
+            
+            echo json_encode("Error Username Taken");
+            exit();
+        }
 
         setcookie("authorizationcookie", base64_encode($this->REACT_APP_KEY), $this->CookieOptions());
         echo json_encode(base64_encode($this->REACT_APP_KEY));

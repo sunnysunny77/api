@@ -39,8 +39,9 @@ class Authorization extends Config
             exit();
         }
         
+        $arr = ["token" => $_SESSION["token"], "bool" => base64_encode($this->REACT_APP_KEY)];
         setcookie("authorizationcookie", $_SESSION["token"], $this->CookieOptions());
-        echo json_encode(base64_encode($this->REACT_APP_KEY));
+        echo json_encode($arr);
         echo header("Connection: Close");
         exit();
     }

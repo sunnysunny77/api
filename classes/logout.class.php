@@ -10,6 +10,7 @@ class Logout extends Config {
         echo header("Access-Control-Allow-Headers: Cookie");
         echo header('Access-Control-Allow-Methods: GET');
         setcookie("authorizationcookie", null, null, "/",$this->origin);
+        unset($_SESSION["token"]);
         echo header("Connection: Close");
         exit();
     }

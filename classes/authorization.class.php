@@ -38,8 +38,8 @@ class Authorization extends Config
             echo json_encode("Incorrect Password");
             exit();
         }
-
-        setcookie("authorizationcookie", base64_encode($this->REACT_APP_KEY), $this->CookieOptions());
+        
+        setcookie("authorizationcookie", $_SESSION["token"], $this->CookieOptions());
         echo json_encode(base64_encode($this->REACT_APP_KEY));
         echo header("Connection: Close");
         exit();

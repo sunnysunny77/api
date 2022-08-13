@@ -1,14 +1,15 @@
 <?php
 include "includes/classes.inc.php";
+session_start();
 
-if (isset($_GET['controller']) && $_GET['controller'] == "authorization" && isset($_GET['model']) &&  $_GET['model'] == "login") {
+if (isset($_GET['controller']) && $_GET['controller'] == "authorization" && isset($_GET['model']) &&  $_GET['model'] == "login" && isset($_GET['token']) &&  $_GET['token'] == $_SESSION["token"]) {
   
   $model = new $_GET['model'];
   $controller = new $_GET['controller']($model,$_SERVER['PHP_AUTH_USER'],$_SERVER['PHP_AUTH_PW']);
   $controller->Authorization();
 }
 
-if (isset($_GET['controller']) && $_GET['controller'] == "registration" && isset($_GET['model']) &&  $_GET['model'] == "signup") {
+if (isset($_GET['controller']) && $_GET['controller'] == "registration" && isset($_GET['model']) &&  $_GET['model'] == "signup" && isset($_GET['token']) &&  $_GET['token'] == $_SESSION["token"]) {
   
   $model = new $_GET['model'];
   $controller = new $_GET['controller']($model,$_SERVER['PHP_AUTH_USER'],$_SERVER['PHP_AUTH_PW']);
@@ -20,7 +21,7 @@ if (isset($_GET['controller']) && $_GET['controller'] == "authorizationcookie" )
   $controller = new $_GET['controller']($_COOKIE[$_GET['controller']]);
 }
 
-if (isset($_GET['controller']) && $_GET['controller'] == "logout" && isset($_COOKIE['authorizationcookie'])) {
+if (isset($_GET['controller']) && $_GET['controller'] == "logout" && isset($_COOKIE['authorizationcookie']) && $_COOKIE['authorizationcookie'] == $_SESSION["token"]) {
 
   $controller = new $_GET['controller'];   
 }

@@ -1,14 +1,14 @@
 <?php
 require "config.class.php";
 
-class Authorizationsession extends Config {
+class Authorizationcookie extends Config {
 
-    public function __construct () {
+    public function __construct ($cookie) {
 
         echo header("Access-Control-Allow-Origin: {$this->origin}");
         echo header('Access-Control-Allow-Methods: GET');
 
-        if ($_SESSION["login"] === true) {
+        if (isset($cookie) && $_SESSION["token"] === $cookie ) {
     
             echo json_encode(base64_encode($this->REACT_APP_KEY));
             echo header("Connection: Close");

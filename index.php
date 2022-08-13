@@ -16,12 +16,12 @@ if (isset($_GET['controller']) && $_GET['controller'] == "registration" && isset
   $controller->Registration();
 }
 
-if (isset($_GET['controller']) && $_GET['controller'] == "authorizationcookie" ) {
+if (isset($_GET['controller']) && $_GET['controller'] == "authorizationsession" ) {
 
-  $controller = new $_GET['controller']($_COOKIE[$_GET['controller']]);
+  $controller = new $_GET['controller'];
 }
 
-if (isset($_GET['controller']) && $_GET['controller'] == "logout" && isset($_COOKIE['authorizationcookie']) && $_COOKIE['authorizationcookie'] == $_SESSION["token"]) {
+if (isset($_GET['controller']) && $_GET['controller'] == "logout") {
 
   $controller = new $_GET['controller'];   
 }

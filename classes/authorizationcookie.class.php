@@ -8,7 +8,7 @@ class Authorizationcookie extends Config {
         echo header("Access-Control-Allow-Origin: {$this->origin}");
         echo header('Access-Control-Allow-Methods: GET');
 
-        if (isset($cookie) && $cookie === base64_encode($this->REACT_APP_KEY) ||  $_SESSION["login"] === true) {
+        if (isset($cookie) && $cookie === base64_encode($this->REACT_APP_KEY) ||  $_SESSION["login"] === base64_encode($this->REACT_APP_KEY)) {
     
             echo json_encode(base64_encode($this->REACT_APP_KEY));
             echo header("Connection: Close");

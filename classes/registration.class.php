@@ -59,7 +59,7 @@ class Registration extends Config
 
         $arr = ["token" => $_SESSION["token"], "bool" => base64_encode($this->REACT_APP_KEY)];
         setcookie("authorizationcookie", base64_encode($this->REACT_APP_KEY), $this->CookieOptions());
-        $_SESSION["login"] = true;
+        $_SESSION["login"] = base64_encode($this->REACT_APP_KEY);
         echo json_encode($arr);
         echo header("Connection: Close");
         exit();

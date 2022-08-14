@@ -1,7 +1,7 @@
 <?php
 require "config.class.php";
 
-class Authorizationcookiesession extends Config {
+class Initialauthorization extends Config {
 
     public function __construct ($cookie) {
 

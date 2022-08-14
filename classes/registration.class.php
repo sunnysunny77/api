@@ -53,7 +53,7 @@ class Registration extends Config
 
         if ($result->errorInfo) {
             
-            echo json_encode("Error Username Taken");
+            echo json_encode("Error Email Taken");
             exit();
         }
 

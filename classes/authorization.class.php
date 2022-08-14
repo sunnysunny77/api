@@ -27,7 +27,7 @@ class Authorization extends Config
 
         if (!$result) {
 
-            echo json_encode("Incorrect User");
+            echo json_encode("Incorrect Email");
             exit();
         }
 

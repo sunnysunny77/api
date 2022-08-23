@@ -1,6 +1,6 @@
 <?php
+include "includes/session.inc.php";
 include "includes/classes.inc.php";
-session_start();
 
 if (isset($_GET['controller']) && $_GET['controller'] == "authorization" && isset($_GET['model']) &&  $_GET['model'] == "login" && isset($_GET['token']) &&  $_GET['token'] == $_SESSION["token"]) {
   

@@ -16,11 +16,6 @@ if (isset($_GET['controller']) && $_GET['controller'] == "registration" && isset
   $controller->Registration();
 }
 
-if (isset($_GET['controller']) && $_GET['controller'] == "initialauthorization" ) {
-
-  $controller = new $_GET['controller']($_COOKIE[$_GET['controller']]);
-}
-
 if (isset($_GET['controller']) && $_GET['controller'] == "logout") {
 
   $controller = new $_GET['controller'];   

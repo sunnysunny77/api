@@ -10,7 +10,7 @@ class Config {
 
         return [
             'expires' => time() + (120*60),
-            'path' => '/',
+            'path' => '/api/?controller=initialauthorization',
             'domain' => $this->origin,
             'secure' => false,
             'httponly' => true,

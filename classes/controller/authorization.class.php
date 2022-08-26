@@ -1,5 +1,5 @@
 <?php
-require "config.class.php";
+require_once __DIR__ . "/../libs/config.class.php";
 
 class Authorization extends Config
 {

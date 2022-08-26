@@ -1,6 +1,6 @@
 <?php
 
-require "db.class.php";
+require_once __DIR__ . "/../libs/db.class.php";
 
 class Signup extends Db {
 

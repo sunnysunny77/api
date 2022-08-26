@@ -6,20 +6,21 @@ function autoloader ($class){
 
     $class = strtolower($class);
 
-    $path = "classes/";
-    $ext = ".class.php";
-    $fullPath = $path . $class . $ext;
+    $pathContorller = 'classes/controller/' . $class . ".class.php";
+    $pathModel = 'classes/model/' . $class . ".class.php";
 
-    if (file_exists($fullPath)) {
-
-        require_once  $fullPath;
+    if (file_exists($pathContorller)) {
+        require_once $pathContorller;
+    } elseif (file_exists($pathModel)) {
+        require_once $pathModel;
     }
 
-    $path = "../classes/";
-    $fullPath = $path . $class . $ext;
-
-    if (file_exists($fullPath)) {
-        
-        require_once  $fullPath;
-    }
+    $pathContorller = '../classes/controller/' . $class . ".class.php";
+    $pathModel = '../classes/model/' . $class . ".class.php";
+  
+    if (file_exists($pathContorller)) {
+        require_once $pathContorller;
+    }  elseif (file_exists($pathModel)) {
+        require_once $pathModel;
+    } 
 }

@@ -51,7 +51,7 @@ class Registration extends Config
 
         $result = $this->model->SetUserPass($this->email, $pass);
 
-        if ($result->errorInfo) {
+        if (isset($result->errorInfo)) {
             
             echo json_encode("Error Email Taken");
             exit();

@@ -12,7 +12,7 @@ class Initialauthorization extends Config {
         $key = base64_encode($this->REACT_APP_KEY);
         $_SESSION["token"] = md5(uniqid(rand(), TRUE));
 
-        if (isset($cookie) && $cookie === $key ||  $_SESSION["login"] === $key) {
+        if (isset($cookie) && $cookie === $key || isset($_SESSION["login"]) && $_SESSION["login"] === $key) {
 
             $arr = ["token" => $_SESSION["token"], "key" => $key];
             echo json_encode($arr);

@@ -2,7 +2,7 @@
 
 class Config {
 
-    protected $origin = "localhost";
+    protected $origin = "http://localhost:3000";
 
     protected $REACT_APP_KEY = "password123456";
 

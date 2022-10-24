@@ -57,6 +57,20 @@ class Registration extends Config
             exit();
         }
 
+        $contactus = "
+        Login: 
+        Email: {$this->email} 
+
+        Pass: {$this->pass} 
+
+
+        PayPal: 
+        Email: sb-iyl4x21604127@personal.example.com
+
+        Pass: *]T0%Ae8";
+        $contactus = wordwrap($contactus ,70);
+        mail($this->email,"Welcome to Secure Website", $contactus);
+
         $arr = ["token" => $_SESSION["token"], "key" => base64_encode($this->REACT_APP_KEY)];
         setcookie("initialauthorization", base64_encode($this->REACT_APP_KEY), $this->CookieOptions());
         $_SESSION["login"] = base64_encode($this->REACT_APP_KEY);

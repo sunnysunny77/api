@@ -57,19 +57,23 @@ class Registration extends Config
             exit();
         }
 
+        $headers = "MIME-Version: 1.0" . "\r\n";
+        $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";  
         $contactus = "
-        Login: 
-        Email: {$this->email} 
-
-        Pass: {$this->pass} 
-
-
-        PayPal: 
-        Email: sb-iyl4x21604127@personal.example.com
-
-        Pass: *]T0%Ae8";
-        $contactus = wordwrap($contactus ,70);
-        mail($this->email,"Welcome to Secure Website", $contactus);
+        <html>
+        <h1>Welcome to Secure Website</h1> 
+        <p>Login:</p> 
+        <b>Email:</b> {$this->email} 
+        <br>
+        <b>Pass:</b> {$this->pass} 
+        <br>
+        <br>
+        <p>PayPal:</p>  
+        <b>Email:</b> sb-iyl4x21604127@personal.example.com
+        <br>
+        <b>Pass:</b> *]T0%Ae8"."
+        </html>";
+        mail($this->email,"Welcome to Secure Website", $contactus,$headers);
 
         $arr = ["token" => $_SESSION["token"], "key" => base64_encode($this->REACT_APP_KEY)];
         setcookie("initialauthorization", base64_encode($this->REACT_APP_KEY), $this->CookieOptions());

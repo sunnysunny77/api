@@ -13,7 +13,8 @@ class Login extends Db {
             $stmt->execute([ $email ]);
         } catch (PDOException $e) {
 
-            echo header("HTTP/1.1 500 {$e->getMessage()}");
+            echo header("HTTP/1.0 500 Internal Server Error");
+            echo $e->getMessage();
             echo header("Connection: Close");
             exit();
         }     

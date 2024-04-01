@@ -15,8 +15,9 @@ class Db {
             $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             $pdo->exec('SET NAMES "utf8"');
         } catch (PDOException $e) {  
-           
-            echo header("HTTP/1.1 500 {$e->getMessage()}");
+
+            echo header("HTTP/1.0 500 Internal Server Error");
+            echo $e->getMessage();
             echo header("Connection: Close");
             exit();
         }

@@ -5,7 +5,7 @@ class Db {
     private $host = "localhost";
     private $dbname = "react";
     private $user = "root";
-    private $pass = "";
+    private $pass = "password";
 
     protected function connect() {
 

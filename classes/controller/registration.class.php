@@ -7,13 +7,15 @@ class Registration extends Config
     private $model;
     private $email;
     private $pass;
+    private $security;
 
-    public function __construct($model, $email, $pass)
+    public function __construct($model, $email, $pass, $security)
     {
 
         $this->model = $model;
         $this->email = $email;
         $this->pass = $pass;
+        $this->security = base64_decode($security);
     }
 
     public function Registration()
@@ -22,6 +24,12 @@ class Registration extends Config
         echo header("Access-Control-Allow-Origin: {$this->origin}");
         echo header("Access-Control-Allow-Headers: Authorization");
         echo header('Access-Control-Allow-Methods: OPTIONS');
+
+        if (isset($_SESSION["factor"]) && $_SESSION["factor"] !== $this->security) {
+
+            echo json_encode("Incorrect Code");
+            exit();
+        }
 
         if (preg_match("/^[^0-9]+$/", $this->pass)) {
 
@@ -49,13 +57,7 @@ class Registration extends Config
 
         $pass = password_hash($this->pass, PASSWORD_DEFAULT);
 
-        $result = $this->model->SetUserPass($this->email, $pass);
-
-        if (isset($result->errorInfo)) {
-            
-            echo json_encode("Error Email Taken");
-            exit();
-        }
+        $this->model->SetUserPass($this->email, $pass);
 
         $headers = "MIME-Version: 1.0" . "\r\n";
         $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";  

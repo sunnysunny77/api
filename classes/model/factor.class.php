@@ -2,21 +2,28 @@
 
 require_once __DIR__ . "/../libs/db.class.php";
 
-class Signup extends Db {
+class Factor extends Db {
 
-    public function SetUserPass ($email, $pass) {
+    public function GetUser ($email) {
 
         try {
 
-            $sql = "INSERT INTO login ( email, pass ) VALUES ( ? , ? )";
+            $sql = "SELECT email FROM login WHERE email = ?";
             $stmt = $this->connect()->prepare($sql);
-            $stmt->execute([ $email, $pass ]);
+            $stmt->execute([ $email ]);
         } catch (PDOException $e) {
+
+            if ($e->getCode() == 23000) {
+  
+                return $e;
+            }
 
             echo header("HTTP/1.0 500 Internal Server Error");
             echo $e->getMessage();
             echo header("Connection: Close");
             exit();
         }  
-    } 
+        
+        return $stmt->fetch();
+    }
 }

@@ -28,7 +28,7 @@ class Initialauthentication extends Config
             exit();
         }
 
-        $_SESSION["factor"] = md5(uniqid(rand(), TRUE));
+        $_SESSION["factor"] = strtolower(substr(md5(uniqid(rand(), true)), 0, 5));
         $headers = "MIME-Version: 1.0" . "\r\n";
         $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";  
         $contactus = "

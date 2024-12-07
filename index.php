@@ -44,3 +44,9 @@ if (isset($_GET['controller']) && $_GET['controller'] == "logout") {
 
   $controller = new $_GET['controller'];   
 }
+
+if (isset($_GET['controller']) && $_GET['controller'] == "enquiry") {
+
+  $controller = new $_GET['controller'];   
+}
+

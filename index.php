@@ -40,12 +40,12 @@ if (isset($_GET['controller']) && $_GET['controller'] == "registration" && isset
   $controller->Registration();
 }
 
-if (isset($_GET['controller']) && $_GET['controller'] == "logout") {
+if (isset($_GET['controller']) && $_GET['controller'] == "logout" && isset($_GET['token']) &&  $_GET['token'] == $_SESSION["token"]) {
 
   $controller = new $_GET['controller'];   
 }
 
-if (isset($_GET['controller']) && $_GET['controller'] == "enquiry") {
+if (isset($_GET['controller']) && $_GET['controller'] == "enquiry" && isset($_GET['token']) &&  $_GET['token'] == $_SESSION["token"]) {
 
   $controller = new $_GET['controller'];   
 }

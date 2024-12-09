@@ -27,11 +27,10 @@ class Enquiry extends Config {
         </html>";
         $contactus  = wordwrap($contactus ,70);
         $mail = mail($to_email,$subject,$contactus,$headers);
-        if (!$mail) {
-          echo print_r(error_get_last()['message']);
-        } else {
-          echo "Thanks sent to mail";
-        }
+        $res = $mail ? "Thanks sent to mail" : "Mail failure.";
+        $arr = ["message" => $res];
+        echo json_encode($arr);
+        echo header("Connection: Close");
         exit();
     }
 }

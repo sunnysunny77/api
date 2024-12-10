@@ -33,25 +33,25 @@ class Registration extends Config
 
         if (preg_match("/^[^0-9]+$/", $this->pass)) {
 
-            echo json_encode("Pass Accepts One #");
+            echo json_encode("Include Atleast One Special Character");
             exit();
         }
 
         if (preg_match("/^[^A-Z]+$/", $this->pass)) {
 
-            echo json_encode("Pass Accepts One Capital");
+            echo json_encode("Include Atleast One Capital Letter");
             exit();
         }
 
         if (preg_match("/^[^a-z]+$/", $this->pass)) {
 
-            echo json_encode("Pass Accepts One Lowercase");
+            echo json_encode("Include Atleast One Lowercase Letter");
             exit();
         }
 
         if (strlen($this->pass) > 19 || strlen($this->pass) < 8) {
 
-            echo json_encode("Pass Accepts 8 To 19 Characters");
+            echo json_encode("Include 8 To 19 Characters");
             exit();
         }
 

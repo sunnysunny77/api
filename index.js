@@ -56,7 +56,7 @@ app.use(function(req, res, next) {
 const alpha = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z",
   "0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
 
-let txt = "";
+let text = "";
 
 const randomColor = () => {
 
@@ -70,17 +70,17 @@ const randomColor = () => {
 const init = () => {
 
   const canvas = createCanvas(140, 50);
-  txt = "";
+  text = "";
 
   for (let i = 1; i <= 7; i++) {
 
-    txt += alpha[Math.floor(Math.random() * alpha.length)];
+    text += alpha[Math.floor(Math.random() * alpha.length)];
   }
 
   const context = canvas.getContext("2d");
   context.font = "25px Bold";
 
-  let i = txt.length;
+  let i = text.length;
 
   while (i--) {
 
@@ -91,7 +91,7 @@ const init = () => {
     context.translate(x, y);
     context.rotate(sDeg);
     context.fillStyle = randomColor();
-    context.fillText(txt[i], 0, 0);
+    context.fillText(text[i], 0, 0);
     context.rotate(-sDeg);
     context.translate(-x, -y);
   }
@@ -128,24 +128,27 @@ const init = () => {
 app.post("/captcha/init", function(req, res) {
 
   res.json({
+
+    key: btoa(process.env.REACT_APP_KEY),
     Canvas: init()
   });
 });
 
 app.post("/captcha/authorization", function(req, res) {
 
-  const request = req.body.Txt;
 
-  if (request === txt) {
+  if (req.body.Text === text) {
 
     res.json({
 
+      key: btoa(process.env.REACT_APP_KEY),
       CaptchaForm: false
     });
   } else {
 
     res.json({
 
+      key: btoa(process.env.REACT_APP_KEY),
       CaptchaForm: "Incorrect"
     });
   }

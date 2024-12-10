@@ -27,7 +27,7 @@ class Authorization extends Config
 
         if (!$result) {
 
-            echo json_encode("Incorrect Email");
+            echo json_encode("Login Incorrect");
             exit();
         }
 
@@ -35,7 +35,7 @@ class Authorization extends Config
 
         if (!$result) {
 
-            echo json_encode("Incorrect Password");
+            echo json_encode("Login Incorrect");
             exit();
         }
         

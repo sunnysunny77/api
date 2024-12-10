@@ -53,6 +53,16 @@ app.use(function(req, res, next) {
   return next();
 });
 
+const rand = () => {
+  return Math.random().toString(36).slice(2);
+};
+
+const getToken = () => {
+  return rand() + rand();
+};
+
+let captchaToken = "";
+
 const alpha = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z",
   "0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
 
@@ -127,8 +137,10 @@ const init = () => {
 
 app.post("/captcha/init", function(req, res) {
 
+  captchaToken = getToken();
   res.json({
 
+    CaptchaToken: captchaToken,
     key: btoa(process.env.REACT_APP_KEY),
     Canvas: init()
   });
@@ -136,11 +148,11 @@ app.post("/captcha/init", function(req, res) {
 
 app.post("/captcha/authorization", function(req, res) {
 
-
-  if (req.body.Text === text) {
+  if (req.body.Text === text && req.body.CaptchaToken === captchaToken) {
 
     res.json({
 
+      CaptchaToken: captchaToken,
       key: btoa(process.env.REACT_APP_KEY),
       CaptchaForm: false
     });
@@ -148,6 +160,7 @@ app.post("/captcha/authorization", function(req, res) {
 
     res.json({
 
+      CaptchaToken: captchaToken,
       key: btoa(process.env.REACT_APP_KEY),
       CaptchaForm: "Incorrect"
     });

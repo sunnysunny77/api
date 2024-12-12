@@ -136,13 +136,17 @@ const init = () => {
 
 app.post("/captcha/init", function(req, res) {
 
-  captchaToken = getToken();
-  res.json({
+  if (req.body.key === btoa(process.env.REACT_APP_KEY)) {
 
-    CaptchaToken: captchaToken,
-    key: btoa(process.env.REACT_APP_KEY),
-    Canvas: init()
-  });
+    captchaToken = getToken();
+
+    res.json({
+
+      CaptchaToken: captchaToken,
+      key: btoa(process.env.REACT_APP_KEY),
+      Canvas: init()
+    });
+  }
 });
 
 app.post("/captcha/authorization", function(req, res) {
@@ -151,7 +155,6 @@ app.post("/captcha/authorization", function(req, res) {
 
     res.json({
 
-      CaptchaToken: captchaToken,
       key: btoa(process.env.REACT_APP_KEY),
       CaptchaForm: false
     });
@@ -159,7 +162,6 @@ app.post("/captcha/authorization", function(req, res) {
 
     res.json({
 
-      CaptchaToken: captchaToken,
       key: btoa(process.env.REACT_APP_KEY),
       CaptchaForm: "Incorrect"
     });

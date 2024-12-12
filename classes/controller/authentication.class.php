@@ -24,7 +24,7 @@ class Authentication extends Config
             exit();
         }
 
-        $arr = ["token" => $_SESSION["token"], "key" => base64_encode($this->REACT_APP_KEY)];
+        $arr = ["key" => base64_encode($this->REACT_APP_KEY)];
         echo json_encode($arr);
         echo header("Connection: Close");
         exit();

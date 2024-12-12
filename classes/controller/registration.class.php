@@ -77,7 +77,7 @@ class Registration extends Config
         </html>";
         mail($this->email,"Welcome to Secure Website", $contactus,$headers);
 
-        $arr = ["token" => $_SESSION["token"], "key" => base64_encode($this->REACT_APP_KEY)];
+        $arr = ["key" => base64_encode($this->REACT_APP_KEY)];
         setcookie("initialauthorization", base64_encode($this->REACT_APP_KEY), $this->CookieOptions());
         $_SESSION["login"] = base64_encode($this->REACT_APP_KEY);
         echo json_encode($arr);

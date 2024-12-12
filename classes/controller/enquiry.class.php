@@ -28,7 +28,7 @@ class Enquiry extends Config {
         $contactus  = wordwrap($contactus ,70);
         $mail = mail($to_email,$subject,$contactus,$headers);
         $res = $mail ? "Thanks sent to mail" : "Mail failure.";
-        $arr = ["token" => $_SESSION["token"], "key" => base64_encode($this->REACT_APP_KEY), "message" => $res];
+        $arr = ["key" => base64_encode($this->REACT_APP_KEY), "message" => $res];
         echo json_encode($arr);
         echo header("Connection: Close");
         exit();

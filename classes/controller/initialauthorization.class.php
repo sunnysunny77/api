@@ -8,15 +8,15 @@ class Initialauthorization extends Config {
 
         echo header("Access-Control-Allow-Origin: {$this->origin}");
         echo header('Access-Control-Allow-Methods: GET');
-       
-        $key = base64_encode($this->REACT_APP_KEY);
-        $_SESSION["token"] = md5(uniqid(rand(), TRUE));
 
         if ($getkey !== $key) {
 
             echo header("Connection: Close");
             exit();
         }
+       
+        $key = base64_encode($this->REACT_APP_KEY);
+        $_SESSION["token"] = md5(uniqid(rand(), TRUE));
 
         if (isset($cookie) && $cookie === $key || isset($_SESSION["login"]) && $_SESSION["login"] === $key) {
 
